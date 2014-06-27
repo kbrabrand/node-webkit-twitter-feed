@@ -1,0 +1,17 @@
+{
+  "name": "lxjs-twitter-feed",
+  "description": "node-webkit powered twitter feed",
+  "version": "0.0.0",
+  "main": "index.html",
+  "author": "Kristoffer Brabrand",
+  "window": {
+    "toolbar": false,
+    "width": 800,
+    "height": 600
+  },
+  "dependencies": {
+    "twit": "^1.1.15",
+    "lodash": "^2.4.1",
+    "jquery": "^2.1.1"
+  }
+}

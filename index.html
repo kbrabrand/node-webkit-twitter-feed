@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>LXJS twitter feed</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <h1>LXJS twitter feed</h1>
+    <div id="container"></div>
+
+    <script>
+    //require('nw.gui').Window.get().showDevTools();
+
+    var Twit      = require('twit'),
+        _         = require('lodash'),
+        $         = require('jquery'),
+        tweetTpl  = '<blockquote><p><%= tweet %></p><small><a href="<%= author %></small></blockquote>',
+        container = $('#container');
+
+    var T = new Twit({
+        consumer_key:         '',
+        consumer_secret:      '',
+        access_token:         '',
+        access_token_secret:  ''
+    });
+
+    // same result as doing { track: 'bananas,oranges,strawberries' }
+    var stream = T.stream('statuses/filter', { track: ['cat', 'dog', 'yolo'] })
+
+    stream.on('tweet', function (tweet) {
+        container.prepend($(_.template(tweetTpl, {
+            tweet: tweet.text,
+            author: 'foobar'
+        })));
+    });
+    </script>
+</body>
+</html>
